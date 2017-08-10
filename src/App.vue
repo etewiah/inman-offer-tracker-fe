@@ -11,10 +11,10 @@
 </template>
 
 <script>
-  import login from './components/Login.vue';
-  import agent from './components/Agent.vue';
-  import offer from './components/Offer.vue';
-  import loading from './components/Loading.vue';
+  // import Login from './components/Login.vue';
+  // import Agent from './components/Agent.vue';
+  // import Offer from './components/Offer.vue';
+  // import Loading from './components/Loading.vue';
 
   // import VueRouter from 'vue-router';
 
@@ -28,7 +28,7 @@
 
     data: () => {
       return {
-        currentView: login,
+        // currentView: Login,
       }
     },
 
@@ -41,21 +41,21 @@
     watch: {
       shown(shown) {
         if(this.shown === 'agent') {
-          this.currentView = agent;
+          // this.currentView = agent;
           $('#hacker-connect').hide('fast')
           $('#logout').show('fast')
           $('#back').hide('fast')
         } else if(this.shown === 'offer') {
-          this.currentView = offer
+          // this.currentView = offer
           $('#logout').show('fast')
           $('#back').show('fast')
         } else if(this.shown === 'login') {
-          this.currentView = login
+          // this.currentView = login
           $('#hacker-connect').show('fast')
           $('#logout').hide('fast')
           $('#back').hide('fast')
         } else {
-          this.currentView = loading
+          // this.currentView = loading
         }
       }
     },
@@ -71,9 +71,9 @@
     },
 
     mounted() {
-      setTimeout(() => {
-        this.$store.dispatch('login')
-      }, 1500)
+      // setTimeout(() => {
+      //   this.$store.dispatch('login')
+      // }, 1500)
     },
 
     created() {
