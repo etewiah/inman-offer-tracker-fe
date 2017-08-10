@@ -2,7 +2,12 @@ import Firebase from 'firebase'
 
 
 const firebaseApp = Firebase.initializeApp({
-  // settings go here
+  apiKey: process.env.FIREBASE_API,
+  authDomain: 'offer-tracker.firebaseapp.com',
+  databaseURL: 'https://offer-tracker.firebaseio.com',
+  projectId: 'offer-tracker',
+  storageBucket: '',
+  messagingSenderId: process.env.FIREBASE_SENDER
 });
 
 // Export the database for components to use.
