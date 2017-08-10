@@ -6,8 +6,7 @@
       <i id="logout" v-on:click="logout()" class="material-icons white-text xx-large pointer" style="position: absolute;right: 30px;top: 30px; display: none;">exit_to_app</i>
       <i id="back" v-on:click="back()" class="material-icons white-text xx-large pointer" style="position: absolute;left: 30px;top: 30px; display: none;">arrow_back</i>
     </div>
-    <component :is='currentView'>
-    </component>
+    <router-view></router-view>
   </span>
 </template>
 
@@ -17,15 +16,15 @@
   import offer from './components/Offer.vue';
   import loading from './components/Loading.vue';
 
-  import VueRouter from 'vue-router';
+  // import VueRouter from 'vue-router';
 
-  window.router = new VueRouter({
-    mode: 'history',
-    routes: []
-  });
+  // window.router = new VueRouter({
+  //   mode: 'history',
+  //   routes: []
+  // });
 
   export default {
-    router: window.router,
+    // router: window.router,
 
     data: () => {
       return {
@@ -78,7 +77,7 @@
     },
 
     created() {
-      window.route = this.$route;
+      // window.route = this.$route;
     }
 
   }

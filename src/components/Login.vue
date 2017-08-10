@@ -12,9 +12,11 @@
           <label for="password"><i class="material-icons grey-text lighten-4">lock</i></label>
         </div>
         <div class="col s12" style="margin-top: 30px;">
-          <div id="login" v-on:click="login()" class="col s12 btn-large waves-effect waves-light yellow black-text z-depth-0">
-            Submit
-          </div>
+          <router-link to="/agent">
+            <div id="login" class="col s12 btn-large waves-effect waves-light yellow black-text z-depth-0">
+              Submit
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
