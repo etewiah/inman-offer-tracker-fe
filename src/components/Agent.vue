@@ -37,9 +37,11 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer" v-on:click="addProperty(newProperty)">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat yellow black-text">ADD</a>
-      </div>
+      <router-link to="/agent">
+        <div class="modal-footer" v-on:click="addProperty(newProperty)">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat yellow black-text">ADD</a>
+        </div>
+      </router-link>
     </div>
   </span>
 </template>
@@ -104,6 +106,7 @@ export default {
     },
     addProperty() {
       this.$firebaseRefs.properties.push(this.newProperty)
+      this.$router.push('agent')
     }
   },
 
