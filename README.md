@@ -2,6 +2,11 @@
 
 > Real estate property offer tracking app
 
+Currently this is just a re-implementation of the FRONTEND folder here:
+https://github.com/ArturGrigio/offer-tracker
+
+I did this simply as a way to get familiar with Vue and the Vue CLI.
+
 ## Build Setup
 
 ``` bash
