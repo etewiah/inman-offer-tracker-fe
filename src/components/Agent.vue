@@ -52,7 +52,6 @@ import { db } from '../store/firebase';
 export default {
 
   firebase: {
-    // properties: db.ref('properties'),
     properties: {
       source: db.ref('properties'),
       // Optional, allows you to handle any errors.
@@ -73,30 +72,6 @@ export default {
   },
 
   methods: {
-    loadOffers() {
-      // this.properties = [{
-      //     'address': '123 Main Street',
-      //     'mls_number': '55454454',
-      //     'agent_first_name': 'Jane',
-      //     'agent_last_name': 'Doe',
-      //     'agent_brokerage': 'XYZ Brokerage',
-      //     'agent_designations': 'CPRS, e-Pro',
-      //   },
-      //   {
-      //     'address': '456 Elm Street',
-      //     'mls_number': '098767890',
-      //     'agent_first_name': 'Jane',
-      //     'agent_last_name': 'Doe',
-      //     'agent_brokerage': 'XYZ Brokerage',
-      //     'agent_designations': 'CPRS, e-Pro',
-      //   }
-      // ]
-      // let self = this;
-      // axios.get('/api/properties')
-      //   .then(response => {
-      //     self.properties = response.data
-      //   })
-    },
     loadOffer(link) {
       this.$store.dispatch('offer')
       this.$store.dispatch('offerLink', link)
@@ -111,7 +86,6 @@ export default {
   },
 
   mounted() {
-    this.loadOffers()
     $('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
