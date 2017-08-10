@@ -10,11 +10,11 @@
                   <span>Add a New Property</span>
   </div>
   </li>
-  <li v-for="offer in offers" v-on:click="loadOffer(offer.link)" class="collection-item pointer">
+  <li v-for="property in properties" v-on:click="loadOffer(property.link)" class="collection-item pointer">
     <div>
-      <h6 v-text="offer.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
+      <h6 v-text="property.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
       <span class="grey-text lighten-2" style="padding: 0 10px">|</span>
-      <span v-text="offer.address"></span>
+      <span v-text="property.address"></span>
     </div>
   </li>
   </ul>
@@ -26,16 +26,16 @@
       <h4>ADD PROPERTY</h4>
       <div class="row">
         <div class="input-field col m7 s12">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">Address</label>
+          <input v-model="newProperty.address" placeholder=""  id="address" type="text" class="validate" />
+          <label for="address">Address</label>
         </div>
         <div class="input-field col m5 s12">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">MLS Number</label>
+          <input v-model="newProperty.mls_number" placeholder=""  id="mls_number" type="text" class="validate" />
+          <label for="mls_number">MLS Number</label>
         </div>
       </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" v-on:click="addProperty(newProperty)">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat yellow black-text">ADD</a>
     </div>
   </div>
@@ -43,45 +43,65 @@
 </template>
 <script>
 import axios from 'axios';
+import { db } from '../store/firebase';
 
 export default {
+
+  firebase: {
+    // properties: db.ref('properties'),
+    properties: {
+      source: db.ref('properties'),
+      // Optional, allows you to handle any errors.
+      cancelCallback(err) {
+        console.error(err);
+      }
+    }
+  },
+
   data: () => {
     return {
-      offers: []
+      // properties: [],
+      newProperty: {
+        address: '',
+        mls_number: ''
+      }
     }
   },
 
   methods: {
     loadOffers() {
-      this.offers = [{
-          'address': '123 Main Street',
-          'mls_number': '55454454',
-          'agent_first_name': 'Jane',
-          'agent_last_name': 'Doe',
-          'agent_brokerage': 'XYZ Brokerage',
-          'agent_designations': 'CPRS, e-Pro',
-        },
-        {
-          'address': '456 Elm Street',
-          'mls_number': '098767890',
-          'agent_first_name': 'Jane',
-          'agent_last_name': 'Doe',
-          'agent_brokerage': 'XYZ Brokerage',
-          'agent_designations': 'CPRS, e-Pro',
-        }
-      ]
+      // this.properties = [{
+      //     'address': '123 Main Street',
+      //     'mls_number': '55454454',
+      //     'agent_first_name': 'Jane',
+      //     'agent_last_name': 'Doe',
+      //     'agent_brokerage': 'XYZ Brokerage',
+      //     'agent_designations': 'CPRS, e-Pro',
+      //   },
+      //   {
+      //     'address': '456 Elm Street',
+      //     'mls_number': '098767890',
+      //     'agent_first_name': 'Jane',
+      //     'agent_last_name': 'Doe',
+      //     'agent_brokerage': 'XYZ Brokerage',
+      //     'agent_designations': 'CPRS, e-Pro',
+      //   }
+      // ]
       // let self = this;
-      // axios.get('/api/offers')
+      // axios.get('/api/properties')
       //   .then(response => {
-      //     self.offers = response.data
+      //     self.properties = response.data
       //   })
     },
     loadOffer(link) {
-      this.$store.dispatch('offer')
-      this.$store.dispatch('offerLink', link)
+      this.$store.dispatch('property')
+      this.$store.dispatch('propertyLink', link)
     },
     openModal() {
       $('#modal1').modal('open');
+    },
+    addProperty() {
+      this.$firebaseRefs.properties.push(this.newProperty)
     }
   },
 
