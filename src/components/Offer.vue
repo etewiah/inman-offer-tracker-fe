@@ -58,13 +58,6 @@ export default {
     }
   },
 
-  // watch: {
-  //   offer() {
-  //     this.getOffer()
-  //   }
-  // },
-
-
   methods: {
     getOffer() {
       this.offer = {
@@ -76,36 +69,46 @@ export default {
         'agent_designations': 'CPRS, e-Pro',
       }
       this.events = [{
-          'status_code': 5,
-          'description': 'event 1'
-        },
-        {
-          'status_code': 1,
-          'description': 'event 2'
-        },
-        {
+          'id': 1,
           'status_code': 0,
-          'description': 'event 3'
-        }
-
+          'description': 'Ready for Signatures'
+        },
+        {
+          'id': 2,
+          'status_code': 0,
+          'description': 'Sent to You for Signatures'
+        },
+        {
+          'id': 3,
+          'status_code': 0,
+          'description': 'Signed and Returned'
+        },
+        {
+          'id': 4,
+          'status_code': 0,
+          'description': 'Submitted to Listing Agent'
+        },
+        {
+          'id': 5,
+          'status_code': 0,
+          'description': 'Receipt Confirmed'
+        },
+        {
+          'id': 6,
+          'status_code': 0,
+          'description': 'Countered'
+        },
+        {
+          'id': 7,
+          'status_code': 0,
+          'description': 'Rejected'
+        },
+        {
+          'id': 8,
+          'status_code': 0,
+          'description': 'Accepted'
+        },
       ]
-      // let self = this;
-      // axios.get('/api/offers/' + self.offerLink)
-      //   .then(response=> {
-      //     self.offer.address = response.data.address
-      //     self.offer.mls_number = response.data.mls_number
-      //     axios.get('/api/events/' + response.data.id)
-      //       .then(events=>{
-      //         return events.data.map(e=> {
-      //           e.status_code = (e.status_code === '1') ? 1 : 0
-      //           return e;
-      //         })
-      //       })
-      //       .then(events=>{
-      //         self.events = events
-      //         self.calculatePercentage(events)
-      //       })
-      //   })
     },
 
     calculatePercentage(events) {
@@ -122,6 +125,7 @@ export default {
     },
 
     statusChange(event, status) {
+      console.log('some message')
       this.events.map(e => {
         if (e.id === event.id) {
           e.status_code = status;
