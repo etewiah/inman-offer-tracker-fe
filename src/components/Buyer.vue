@@ -27,7 +27,7 @@
         <div class="col s8 m10 center offset-s2 offset-m1">
           <div v-for="event in events">
             <div v-if="offer.eventId === event.id">
-			  <label v-bind:for="event.id"><h5 class="black-text" style="position: relative; bottom:15px;">{{ event.description }}</h5></label>
+			        <label v-bind:for="event.id"><h3 class="black-text" style="position: relative; bottom:15px;">{{ event.description }}</h3></label>
             </div>
           </div>
         </div>
