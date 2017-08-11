@@ -25,6 +25,9 @@
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin large" v-text="offer.address"></p>
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin small" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <div class="spacer-10"></div>
+      <div v-if="offer.eventId === 6">
+	    <img src="http://pa1.narvii.com/6365/14da981f6eaee59c68a45e4854895a9d259ef59e_128.gif" >
+	    </div>
     </div>
   </span>
 </template>
