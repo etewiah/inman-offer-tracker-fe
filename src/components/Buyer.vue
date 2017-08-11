@@ -17,7 +17,7 @@
           :show-percent="true"
           :fill="{ color: 'rgb(255, 235, 59)' }">
       </vue-circle>
-      <p class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="'MLS NUMBER '+offer.mls_number"></p>
+      <p class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="'MLS NUMBER 1234567890'"></p>
       <h4 class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="offer.address"></h4>
 
 
