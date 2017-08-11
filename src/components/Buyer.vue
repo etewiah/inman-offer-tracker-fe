@@ -26,7 +26,7 @@
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin small" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <div class="spacer-10"></div>
       <div v-if="offer.eventId === 6">
-	    <img src="https://i.redd.it/1rc32fpwimdy.gif" >
+	    <img src="https://i.redd.it/1rc32fpwimdy.gif" height="128" width="128" >
 	    </div>
     </div>
   </span>
