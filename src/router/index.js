@@ -21,7 +21,7 @@ export default new Router({
       component: Agent
     },
     {
-      path: '/buyer',
+      path: '/buyer/:id',
       name: 'Buyer',
       component: Buyer
     },
