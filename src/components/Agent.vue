@@ -17,9 +17,9 @@
                 <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
                 <span class="flow-text xx-large" v-text="property.address"></span>
               </router-link>
-              <router-link to="/buyer">
-				        <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
-				        <span class="flow-text xx-large">Buyer View</span>
+              <router-link :to="'/buyer/'+property['.key']">
+                <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
+                <span class="flow-text xx-large">Buyer View</span>
 				      </router-link>
             </div>
           </li>
