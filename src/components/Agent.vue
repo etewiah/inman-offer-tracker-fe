@@ -3,21 +3,25 @@
     <div class="row">
       <div class="col s12 m10 l8 offset-l2 offset-m1">
         <ul class="collection with-header">
-          <li class="collection-header"><h4>Properties</h4></li>
+          <li class="collection-header"><h2>Properties</h2></li>
           <li v-on:click="openModal()" class="collection-item pointer">
             <div>
               <i class="material-icons yellow-text left">add_circle</i>
-              <span>Add a New Property</span>
+              <span class="flow-text xx-large">Add a New Property</span>
             </div>
           </li>
           <li v-for="property in properties" class="collection-item pointer">
-            <router-link :to="'/offer/'+property['.key']">
-              <div>
-                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
-                <span class="grey-text lighten-2" style="padding: 0 10px">|</span>
-                <span v-text="property.address"></span>
-              </div>
-            </router-link>
+            <div>
+              <router-link :to="'/offer/'+property['.key']">
+                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text xx-large" style="display: inline-block"></h6>
+                <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
+                <span class="flow-text xx-large" v-text="property.address"></span>
+              </router-link>
+              <router-link to="/buyer">
+				        <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
+				        <span class="flow-text xx-large">Buyer View</span>
+				      </router-link>
+            </div>
           </li>
         </ul>
       </div>
