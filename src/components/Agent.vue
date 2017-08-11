@@ -13,9 +13,9 @@
           <li v-for="property in properties" class="collection-item pointer">
             <router-link to="/offer">
               <div>
-                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
-                <span class="grey-text lighten-2" style="padding: 0 10px">|</span>
-                <span class="xx-large" v-text="property.address"></span>
+                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text" style="display: inline-block"></h6>
+                <span class="grey-text lighten-2 flow-text" style="padding: 0 10px">|</span>
+                <span class="flow-text" v-text="property.address"></span>
               </div>
             </router-link>
           </li>
