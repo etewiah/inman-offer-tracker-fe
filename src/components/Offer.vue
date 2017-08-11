@@ -20,8 +20,6 @@
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <h4 class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="offer.address"></h4>
 
-      {{offer.eventId}}
-
       <div class="spacer-40"></div>
       <div class="spacer-40"></div>
       <div class="spacer-10"></div>
