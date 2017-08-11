@@ -37,13 +37,28 @@ export default {
     VueCircle
   },
 
+  watch: {
+    offer(val) {
+      let total = this.events.length;
+      let completed = val.eventId || 1;
+      // events.forEach(event => {
+      //   if (event.status_code) {
+      //     completed += 1
+      //   }
+      // })
+      let percentage = parseInt(((completed / total) * 100).toFixed(0))
+      this.percentage = percentage
+      this.$refs.percentageCircle.updateProgress(percentage)
+    },
+  },
+
   computed: {
     offerLink() {
       return this.$store.state.offerLink;
     }
   },
 
-  firebase: function () {
+  firebase: function() {
     return {
       offer: {
         source: db.ref('properties/' + this.$route.params.id),
@@ -58,6 +73,7 @@ export default {
 
   data: () => {
     return {
+      offer: {},
       percentage: 0,
       events: {},
     }
@@ -98,28 +114,29 @@ export default {
       ]
     },
 
-    calculatePercentage() {
-      let total = this.events.length;
-      let completed = this.offer.eventId || 1;
-      let percentage = parseInt(((completed / total) * 100).toFixed(0))
-      this.percentage = percentage
-      this.$refs.percentageCircle.updateProgress(percentage)
-    },
+    // calculatePercentage() {
+    //   let total = this.events.length;
+    //   let completed = this.offer.eventId || 1;
+    //   let percentage = parseInt(((completed / total) * 100).toFixed(0))
+    //   this.percentage = percentage
+    //   this.$refs.percentageCircle.updateProgress(percentage)
+    // },
+
 
     statusChange(event, status) {
       db.ref('properties/' + this.$route.params.id).set({
         address: this.offer.address,
         mls_number: this.offer.mls_number,
-        eventId : status
+        eventId: status
       });
 
-      this.calculatePercentage()
+      // this.calculatePercentage()
     }
   },
 
   mounted() {
     this.getOffer()
-    this.calculatePercentage(this.events)
+    // this.calculatePercentage(this.events)
   }
 }
 
