@@ -64,7 +64,8 @@ export default {
     return {
       newProperty: {
         address: '',
-        mls_number: ''
+        mls_number: '',
+        eventId: 0
       }
     }
   },
