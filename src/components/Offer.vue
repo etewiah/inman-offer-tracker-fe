@@ -16,7 +16,7 @@
           :inner-text="'<h1>'+percentage+'%</h1>'"
           :show-percent="true"
           :fill="{ color: 'rgb(255, 235, 59)' }">
-          </vue-circle>
+      </vue-circle>
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <h4 class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="offer.address"></h4>
 
@@ -26,8 +26,8 @@
       <div class="row center">
         <div class="col s8 m10 center offset-s2 offset-m1">
           <div v-for="event in events">
-            <input v-if="event.status_code" v-on:click="statusChange(event, 0)" type="checkbox" v-bind:id="event.id" checked="checked" />
-            <input v-if="!event.status_code" v-on:click="statusChange(event, 1)" type="checkbox" v-bind:id="event.id" />
+            <input v-if="event.id <= offer.eventId" v-on:click="statusChange(event, event.id-1)" type="checkbox" v-bind:id="event.id" checked="checked" />
+            <input v-if="event.id > offer.eventId" v-on:click="statusChange(event, event.id)" type="checkbox" v-bind:id="event.id" />
             <label v-bind:for="event.id"><h5 class="black-text" style="position: relative; bottom:15px;">{{ event.description }}</h5></label>
           </div>
         </div>
@@ -36,8 +36,8 @@
   </span>
 </template>
 <script>
-import axios from 'axios';
 import VueCircle from 'vue2-circle-progress'
+import { db } from '../store/firebase';
 
 export default {
   components: {
@@ -50,90 +50,95 @@ export default {
     }
   },
 
-  data: () => {
+  firebase: function () {
     return {
-      offer: {},
-      percentage: 10,
-      events: []
+      offer: {
+        source: db.ref('properties/' + this.$route.params.id),
+        asObject: true,
+        // Optional, allows you to handle any errors.
+        cancelCallback(err) {
+          console.error(err);
+        }
+      }
     }
   },
 
-  // watch: {
-  //   offer() {
-  //     this.getOffer()
-  //   }
-  // },
-
+  data: () => {
+    return {
+      // offer: {},
+      percentage: 0,
+      events: {},
+    }
+  },
 
   methods: {
     getOffer() {
-      this.offer = {
-        'address': '123 Main Street',
-        'mls_number': '55454454',
-        'agent_first_name': 'Jane',
-        'agent_last_name': 'Doe',
-        'agent_brokerage': 'XYZ Brokerage',
-        'agent_designations': 'CPRS, e-Pro',
-      }
       this.events = [{
-          'status_code': 5,
-          'description': 'event 1'
-        },
-        {
-          'status_code': 1,
-          'description': 'event 2'
-        },
-        {
+          'id': 1,
           'status_code': 0,
-          'description': 'event 3'
-        }
-
+          'description': 'Ready for Signatures'
+        },
+        {
+          'id': 2,
+          'status_code': 0,
+          'description': 'Sent to You for Signatures'
+        },
+        {
+          'id': 3,
+          'status_code': 0,
+          'description': 'Signed and Returned'
+        },
+        {
+          'id': 4,
+          'status_code': 0,
+          'description': 'Submitted to Listing Agent'
+        },
+        {
+          'id': 5,
+          'status_code': 0,
+          'description': 'Receipt Confirmed'
+        },
+        {
+          'id': 6,
+          'status_code': 0,
+          'description': 'Accepted'
+        },
       ]
-      // let self = this;
-      // axios.get('/api/offers/' + self.offerLink)
-      //   .then(response=> {
-      //     self.offer.address = response.data.address
-      //     self.offer.mls_number = response.data.mls_number
-      //     axios.get('/api/events/' + response.data.id)
-      //       .then(events=>{
-      //         return events.data.map(e=> {
-      //           e.status_code = (e.status_code === '1') ? 1 : 0
-      //           return e;
-      //         })
-      //       })
-      //       .then(events=>{
-      //         self.events = events
-      //         self.calculatePercentage(events)
-      //       })
-      //   })
     },
 
-    calculatePercentage(events) {
-      let total = events.length;
-      let completed = 0;
-      events.forEach(event => {
-        if (event.status_code) {
-          completed += 1
-        }
-      })
+    calculatePercentage() {
+      let total = this.events.length;
+      let completed = this.offer.eventId;
+      // events.forEach(event => {
+      //   if (event.status_code) {
+      //     completed += 1
+      //   }
+      // })
       let percentage = parseInt(((completed / total) * 100).toFixed(0))
       this.percentage = percentage
       this.$refs.percentageCircle.updateProgress(percentage)
     },
 
     statusChange(event, status) {
-      this.events.map(e => {
-        if (e.id === event.id) {
-          e.status_code = status;
-        }
-        return e;
-      })
-      this.calculatePercentage(this.events)
+      // this.events.map(e => {
+      //   if (e.id === event.id) {
+      //     e.status_code = status;
+      //   }
+      //   return e;
+      // })
+      db.ref('properties/' + this.$route.params.id).set({
+        address: this.offer.address,
+        mls_number: this.offer.mls_number,
+        eventId : status
+      });
+
+      this.calculatePercentage()
     }
   },
 
   mounted() {
     this.getOffer()
+    this.calculatePercentage(this.events)
   }
 }
 

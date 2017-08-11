@@ -26,7 +26,7 @@ export default new Router({
       component: Buyer
     },
     {
-      path: '/offer',
+      path: '/offer/:id',
       name: 'Offer',
       component: Offer
     }

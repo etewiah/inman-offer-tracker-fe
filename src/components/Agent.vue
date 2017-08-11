@@ -12,7 +12,7 @@
           </li>
           <li v-for="property in properties" class="collection-item pointer">
             <div>
-              <router-link to="/offer">
+              <router-link :to="'/offer/'+property['.key']">
                 <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text xx-large" style="display: inline-block"></h6>
                 <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
                 <span class="flow-text xx-large" v-text="property.address"></span>
@@ -50,7 +50,6 @@
   </span>
 </template>
 <script>
-import axios from 'axios';
 import { db } from '../store/firebase';
 
 export default {
@@ -67,10 +66,10 @@ export default {
 
   data: () => {
     return {
-      // properties: [],
       newProperty: {
         address: '',
-        mls_number: ''
+        mls_number: '',
+        eventId: 0
       }
     }
   },
