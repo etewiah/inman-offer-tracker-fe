@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col s12 m10 l8 offset-l2 offset-m1">
         <ul class="collection with-header">
-          <li class="collection-header"><h4>Properties</h4></li>
+          <li class="collection-header"><h2>Properties</h2></li>
           <li v-on:click="openModal()" class="collection-item pointer">
             <div>
               <i class="material-icons yellow-text left">add_circle</i>
-              <span>Add a New Property</span>
+              <span class="flow-text">Add a New Property</span>
             </div>
           </li>
           <li v-for="property in properties" class="collection-item pointer">
