@@ -4,6 +4,7 @@ import App from '../App'
 import Offer from '../components/Offer'
 import Agent from '../components/Agent'
 import Login from '../components/Login'
+import Buyer from '../components/Buyer'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/agent',
       name: 'Agent',
       component: Agent
+    },
+    {
+      path: '/buyer',
+      name: 'Buyer',
+      component: Buyer
     },
     {
       path: '/offer',
