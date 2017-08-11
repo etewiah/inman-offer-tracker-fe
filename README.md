@@ -27,6 +27,7 @@ http://klavado.com
  - **Tomas McCandless** ([*Voiceter Pro*](http://www.voiceterpro.com)): tomas@voiceterpro.com
  - **Ricky Watts** ([Coldwell Banker Heritage](http://www.coldwellbankerishome.com)): ricky.watts@coldwellbanker.com
  - **Ed Tee** ([PropertyWebBuilder](http://propertywebbuilder.com)): ed@propertywebbuilder.com
+ - **Jess Martin** ([CTO & Co-founder, First.io](http://first.io))
 
 
 
