@@ -13,13 +13,13 @@
           <li v-for="property in properties" class="collection-item pointer">
             <div>
               <router-link :to="'/offer/'+property['.key']">
-                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text xx-large" style="display: inline-block"></h6>
-                <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
-                <span class="flow-text xx-large" v-text="property.address"></span>
+                <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text" style="display: inline-block"></h6>
+                <span class="grey-text lighten-2 flow-text" style="padding: 0 10px">|</span>
+                <span class="flow-text" v-text="property.address"></span>
               </router-link>
               <router-link :to="'/buyer/'+property['.key']">
-                <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
-                <span class="flow-text xx-large">Buyer View</span>
+                <span class="grey-text lighten-2 flow-text" style="padding: 0 10px">|</span>
+                <span class="flow-text">Buyer View</span>
 				      </router-link>
             </div>
           </li>
