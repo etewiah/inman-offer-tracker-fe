@@ -1,6 +1,11 @@
 <template>
   <span>
     <div class="row center">
+      <div v-for="event in events">
+        <div v-if="offer.eventId === event.id">
+          <label v-bind:for="event.id"><h4 class="black-text" style="font-weight: 300; padding: 0 10px;">{{ event.description }}</h4></label>
+        </div>
+      </div>
       <vue-circle
           id="circle"
           :progress="percentage"
@@ -17,21 +22,9 @@
           :show-percent="true"
           :fill="{ color: 'rgb(255, 235, 59)' }">
       </vue-circle>
-      <p class="col s8 m10 center offset-s2 offset-m1 no-margin xx-large" v-text="'MLS NUMBER '+offer.mls_number"></p>
-      <h2 class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="offer.address"></h2>
-      <div class="spacer-40"></div>
-      <div class="spacer-40"></div>
-      <div class="spacer-40"></div>
+      <p class="col s8 m10 center offset-s2 offset-m1 no-margin large" v-text="offer.address"></p>
+      <p class="col s8 m10 center offset-s2 offset-m1 no-margin small" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <div class="spacer-10"></div>
-      <div class="row center">
-        <div class="col s8 m10 center offset-s2 offset-m1">
-          <div v-for="event in events">
-            <div v-if="offer.eventId === event.id">
-			        <label v-bind:for="event.id"><h3 class="black-text" style="position: relative; bottom:15px;">{{ event.description }}</h3></label>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </span>
 </template>
@@ -65,7 +58,6 @@ export default {
 
   data: () => {
     return {
-      // offer: {},
       percentage: 0,
       events: {},
     }
@@ -109,23 +101,12 @@ export default {
     calculatePercentage() {
       let total = this.events.length;
       let completed = this.offer.eventId || 1;
-      // events.forEach(event => {
-      //   if (event.status_code) {
-      //     completed += 1
-      //   }
-      // })
       let percentage = parseInt(((completed / total) * 100).toFixed(0))
       this.percentage = percentage
       this.$refs.percentageCircle.updateProgress(percentage)
     },
 
     statusChange(event, status) {
-      // this.events.map(e => {
-      //   if (e.id === event.id) {
-      //     e.status_code = status;
-      //   }
-      //   return e;
-      // })
       db.ref('properties/' + this.$route.params.id).set({
         address: this.offer.address,
         mls_number: this.offer.mls_number,
