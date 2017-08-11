@@ -15,7 +15,7 @@
               <div>
                 <h6 v-text="property.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
                 <span class="grey-text lighten-2" style="padding: 0 10px">|</span>
-                <span v-text="property.address"></span>
+                <span class="xx-large" v-text="property.address"></span>
               </div>
             </router-link>
           </li>
