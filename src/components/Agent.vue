@@ -7,7 +7,7 @@
           <li v-on:click="openModal()" class="collection-item pointer">
             <div>
               <i class="material-icons yellow-text left">add_circle</i>
-              <span class="flow-text xx-large">Add a New Property</span>
+              <span class="flow-text">Add a New Property</span>
             </div>
           </li>
           <li v-for="property in properties" class="collection-item pointer">

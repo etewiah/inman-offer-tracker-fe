@@ -5,10 +5,10 @@
       <h2 class="white-text no-margin hide-on-small-only">OFFER TRACKER</h2>
       <h2 class="white-text no-margin hide-on-med-and-up flow-text">OFFER TRACKER</h2>
       <router-link to="/">
-        <i id="logout" v-if="$route.path === '/agent'" v-on:click="logout()" class="material-icons white-text xx-large pointer" style="position: absolute;right: 30px;top: 30px;">exit_to_app</i>
+        <i id="logout" v-if="$route.path === '/agent'" v-on:click="logout()" class="material-icons white-text pointer" style="position: absolute;right: 30px;top: 30px;">exit_to_app</i>
       </router-link>
       <router-link to="/agent">
-        <i id="back" v-if="$route.path.startsWith('/offer')" v-on:click="back()" class="material-icons white-text xx-large pointer" style="position: absolute;left: 30px;top: 30px;">arrow_back</i>
+        <i id="back" v-if="$route.path.startsWith('/offer')" v-on:click="back()" class="material-icons white-text pointer" style="position: absolute;left: 30px;top: 30px;">arrow_back</i>
       </router-link>
     </div>
     <router-view></router-view>
