@@ -108,7 +108,7 @@ export default {
 
     calculatePercentage() {
       let total = this.events.length;
-      let completed = this.offer.eventId || 0;
+      let completed = this.offer.eventId || 1;
       // events.forEach(event => {
       //   if (event.status_code) {
       //     completed += 1
