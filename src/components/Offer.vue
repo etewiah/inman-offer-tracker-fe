@@ -16,9 +16,10 @@
           :inner-text="'<h1>'+percentage+'%</h1>'"
           :show-percent="true"
           :fill="{ color: 'rgb(255, 235, 59)' }">
-          </vue-circle>
+      </vue-circle>
       <p class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="'MLS NUMBER '+offer.mls_number"></p>
       <h4 class="col s8 m10 center offset-s2 offset-m1 no-margin" v-text="offer.address"></h4>
+
 
       <div class="spacer-40"></div>
       <div class="spacer-40"></div>
@@ -36,8 +37,8 @@
   </span>
 </template>
 <script>
-import axios from 'axios';
 import VueCircle from 'vue2-circle-progress'
+import { db } from '../store/firebase';
 
 export default {
   components: {
@@ -50,24 +51,29 @@ export default {
     }
   },
 
+  firebase: function () {
+    return {
+      offer: {
+        source: db.ref('properties/' + this.$route.params.id),
+        asObject: true,
+        // Optional, allows you to handle any errors.
+        cancelCallback(err) {
+          console.error(err);
+        }
+      }
+    }
+  },
+
   data: () => {
     return {
-      offer: {},
-      percentage: 10,
-      events: []
+      // offer: {},
+      percentage: 0,
+      events: {},
     }
   },
 
   methods: {
     getOffer() {
-      this.offer = {
-        'address': '123 Main Street',
-        'mls_number': '55454454',
-        'agent_first_name': 'Jane',
-        'agent_last_name': 'Doe',
-        'agent_brokerage': 'XYZ Brokerage',
-        'agent_designations': 'CPRS, e-Pro',
-      }
       this.events = [{
           'id': 1,
           'status_code': 0,
@@ -96,16 +102,6 @@ export default {
         {
           'id': 6,
           'status_code': 0,
-          'description': 'Countered'
-        },
-        {
-          'id': 7,
-          'status_code': 0,
-          'description': 'Rejected'
-        },
-        {
-          'id': 8,
-          'status_code': 0,
           'description': 'Accepted'
         },
       ]
@@ -125,7 +121,6 @@ export default {
     },
 
     statusChange(event, status) {
-      console.log('some message')
       this.events.map(e => {
         if (e.id === event.id) {
           e.status_code = status;
@@ -138,6 +133,7 @@ export default {
 
   mounted() {
     this.getOffer()
+    this.calculatePercentage(this.events)
   }
 }
 

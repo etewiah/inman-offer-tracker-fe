@@ -11,7 +11,7 @@
             </div>
           </li>
           <li v-for="property in properties" class="collection-item pointer">
-            <router-link to="/offer">
+            <router-link :to="'/offer/'+property['.key']">
               <div>
                 <h6 v-text="property.mls_number" class="red-text darken-4 no-margin" style="display: inline-block"></h6>
                 <span class="grey-text lighten-2" style="padding: 0 10px">|</span>
@@ -46,7 +46,6 @@
   </span>
 </template>
 <script>
-import axios from 'axios';
 import { db } from '../store/firebase';
 
 export default {
@@ -63,7 +62,6 @@ export default {
 
   data: () => {
     return {
-      // properties: [],
       newProperty: {
         address: '',
         mls_number: ''

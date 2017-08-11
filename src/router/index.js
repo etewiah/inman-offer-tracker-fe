@@ -20,7 +20,7 @@ export default new Router({
       component: Agent
     },
     {
-      path: '/offer',
+      path: '/offer/:id',
       name: 'Offer',
       component: Offer
     }
