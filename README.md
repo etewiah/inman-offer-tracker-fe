@@ -1,11 +1,34 @@
-# inman-offer-tracker-fe
+# OFFER TRACKER
+A Home Offer Tracker (Developed at Inman Hackathon)
+[![Offer Tracker Demo](http://i.imgur.com/qnfo94Y.gif)](https://youtu.be/t9ycYMwvHQQ)
 
-> Real estate property offer tracking app
-
-Currently this is just a re-implementation of the FRONTEND folder here:
+The original project is here and includes some extra work done on a backend API:
 https://github.com/ArturGrigio/offer-tracker
 
-I did this simply as a way to get familiar with Vue and the Vue CLI.
+This repo focuses on the Vue.js frontend and uses Google firebase as the backend.
+
+## Demo:
+
+A live demo can be seen here:
+http://klavado.com
+
+## Idea: 
+ - **Bradley Inman**
+ - **Shane Farkas** (*The Agency*) shane@theagencyre.com
+ - **Joel Burslem** (*1000watt*)
+ - **Paul Cooley** (*Imprev*) paul@imprev.com
+ - **Tom Flanagan** (*The Group Inc*)
+
+
+## Developers: 
+ - **Artur Grigio** ([*ListingZen*](https://ListingZen.com)): arturgrigio@gmail.com
+ - **Todd LaMothe** ([*Union Street Media*](https://unionstreetmedia.com)): todd@unionstreetmedia.com
+ - **Ami Berger** ([*Voiceter Pro*](http://www.voiceterpro.com)): ami@voiceterpro.com
+ - **Tomas McCandless** ([*Voiceter Pro*](http://www.voiceterpro.com)): tomas@voiceterpro.com
+ - **Ricky Watts** ([Coldwell Banker Heritage](http://www.coldwellbankerishome.com)): ricky.watts@coldwellbanker.com
+ - **Ed Tee** ([PropertyWebBuilder](http://propertywebbuilder.com)): ed@propertywebbuilder.com
+
+
 
 ## Build Setup
 
