@@ -69,7 +69,7 @@ export default {
       newProperty: {
         address: '',
         mls_number: '',
-        eventId: 0
+        eventId: 1
       }
     }
   },
