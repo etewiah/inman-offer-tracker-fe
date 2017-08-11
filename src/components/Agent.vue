@@ -11,13 +11,17 @@
             </div>
           </li>
           <li v-for="property in properties" class="collection-item pointer">
-            <router-link to="/offer">
-              <div>
+            <div>
+              <router-link to="/offer">
                 <h6 v-text="property.mls_number" class="red-text darken-4 no-margin flow-text xx-large" style="display: inline-block"></h6>
                 <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
                 <span class="flow-text xx-large" v-text="property.address"></span>
-              </div>
-            </router-link>
+              </router-link>
+              <router-link to="/buyer">
+				        <span class="grey-text lighten-2 flow-text xx-large" style="padding: 0 10px">|</span>
+				        <span class="flow-text xx-large">Buyer View</span>
+				      </router-link>
+            </div>
           </li>
         </ul>
       </div>
